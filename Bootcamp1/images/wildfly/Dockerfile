@@ -1,6 +1,6 @@
 FROM jboss/wildfly:10.1.0.Final
 
-MAINTAINER Olivier Liechti <olivier.liechti@heig-vd.ch>
+MAINTAINER Pascal Sekley <pascal.sekley@heig-vd.ch>
 
 ADD Bootcamp1-1.0-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/
 
