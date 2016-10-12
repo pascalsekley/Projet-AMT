@@ -43,7 +43,7 @@
                 </div>
                 
                 <div class = "erreur">
-                    <h3><font color="red"> ${userManager.erreur} </font> </h3> <br> <br>
+                    <h3><font color="red">${errorMessage}</font> </h3> <br> <br>
                     </div>
                 
                 <div class="rem-for-agile">

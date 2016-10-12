@@ -6,9 +6,11 @@
 package com.mycompany.project.web;
 
 import com.mycompany.project.model.User;
+import com.mycompany.project.services.IUserManager;
 import com.mycompany.project.services.UserManager;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,12 +20,14 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author
  */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
     public static final String ATT_USER_SESSION = "userSession";
-    UserManager userManager = new UserManager();
+    
+    @EJB
+    IUserManager userManager;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -79,18 +83,16 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
                
-        
-        User connectedUser;
-        HttpSession session;
-        request.setAttribute("userManager", userManager);
-        
-        if ((connectedUser = userManager.ConnectUser(request)) != null){
-            session = request.getSession();
-            session.setAttribute(ATT_USER_SESSION, connectedUser);
+               String username = request.getParameter("username");
+               String password = request.getParameter("password");
+               User connectedUser;
+               
+        if ((connectedUser = userManager.authenticate(username, password)) != null){
+            request.getSession().setAttribute(ATT_USER_SESSION, connectedUser);
             request.getRequestDispatcher("/WEB-INF/pages/logConfirmation.jsp").forward(request, response);
         }else{
+            request.setAttribute("errorMessage", "Login failed.");
             request.getRequestDispatcher("/index.jsp").forward(request, response);
-            userManager.setErreur(null);
         }
         
 //        /* Récupération de la session depuis la requête */

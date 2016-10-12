@@ -4,51 +4,45 @@
  * and open the template in the editor.
  */
 
-package com.mycompany.project.model;
+package com.mycompany.project.model.rest.dto;
 
 /**
  * 
- * @author Pascal Sekley
+ * @author Sekley Pascal <pascal.sekley@heig-vd.ch>
  */
-public class User {
+public class UserPostDTO {
     private String username;
     private String email;
     private String password;
-
-    public User(String username, String email, String password) {
+    
+    public UserPostDTO(){
+        
+    }
+    
+    public UserPostDTO(String username, String email, String password){
         this.username = username;
-        this.email = email;
+        this.email    = email;
         this.password = password;
     }
-
-    public User() {
-    }
-
     
-    public String getUsername() {
+    public String getUsername(){
         return username;
     }
-
-    public String getEmail() {
+    public String getEmail(){
         return email;
     }
-
-    public String getPassword() {
+    public String getPassword(){
         return password;
     }
     
-
-    public void setUsername(String username) {
+    public void setUsername(String username){
         this.username = username;
     }
-
-    public void setEmail(String email) {
+    public void setEmail(String email){
         this.email = email;
     }
-
-    public void setPassword(String password) {
+    public void setPassword(String password){
         this.password = password;
     }
-    
-    
+
 }
