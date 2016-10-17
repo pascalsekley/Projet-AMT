@@ -6,8 +6,8 @@
 package com.mycompany.project.web;
 
 import com.mycompany.project.model.User;
-import com.mycompany.project.services.IUserManager;
-//import com.mycompany.project.services.dao.IUserManagerDAO;
+//import com.mycompany.project.services.IUserManager;
+import com.mycompany.project.services.dao.IUserManagerDAO;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 public class RegistrationServlet extends HttpServlet {
 
     @EJB
-    private IUserManager userManager;
-    //private IUserManagerDAO userManagerDAO;
+    //private IUserManager userManager;
+    private IUserManagerDAO userManagerDAO;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -57,8 +57,8 @@ public class RegistrationServlet extends HttpServlet {
         String email = request.getParameter("email");
         User newUser = new User(username, email, password);
 
-        if (userManager.register(newUser)) {
-        //if (userManagerDAO.register(newUser)) {
+        //if (userManager.register(newUser)) {
+        if (userManagerDAO.register(newUser)) {
 
             request.getRequestDispatcher("/WEB-INF/pages/regConfirmation.jsp").forward(request, response);
 
