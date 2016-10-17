@@ -94,20 +94,7 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("errorMessage", "Login failed.");
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
-        
-//        /* Récupération de la session depuis la requête */
-//        HttpSession session = request.getSession();
-        
-        
-        // Vérifier s'il ya erreur de validation d'abord---- TO DO
-        
-        
-  
-//        // Ajout du user à la session
-//        session.setAttribute(ATT_USER_SESSION, connectedUser);
-        
-        
-       // request.getRequestDispatcher("/WEB-INF/pages/logConfirmation.jsp").forward(request, response);
+
     }
 
 }

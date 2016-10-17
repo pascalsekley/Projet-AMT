@@ -136,8 +136,16 @@
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:4.0">
             <datasources>
-                <datasource jta="true" jndi-name="java:/jdbc/sakila" pool-name="SakilaDS" enabled="true" use-ccm="true">
-                    <connection-url>jdbc:mysql://db:3306/sakila</connection-url>
+                <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <driver>h2</driver>
+                    <security>
+                        <user-name>sa</user-name>
+                        <password>sa</password>
+                    </security>
+                </datasource>
+                <datasource jta="true" jndi-name="java:/jdbc/amtusers" pool-name="AmtUsers" enabled="true" use-ccm="true">
+                    <connection-url>jdbc:mysql://db:3306/amtusers</connection-url>
                     <driver-class>com.mysql.jdbc.Driver</driver-class>
                     <driver>mysql-connector-java-5.1.40-bin.jar_com.mysql.jdbc.Driver_5_1</driver>
                     <security>

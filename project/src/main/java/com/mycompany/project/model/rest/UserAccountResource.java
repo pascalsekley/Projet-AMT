@@ -115,10 +115,7 @@ public class UserAccountResource {
                     .build();
         }
     }
-    
-    
-    
-    
+ 
     
     public User fromDTO(UserDTO dto){
         User myUser = new User();

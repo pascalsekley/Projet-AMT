@@ -21,9 +21,18 @@
         <meta name="keywords" content="Simple Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <!-- //For-Mobile-Apps-and-Meta-Tags -->
+        
+    <div style="text-align:right;">
+        <button class="button" onclick="window.location.href='index.jsp'">Login Page</button>
+        <button class="button" onclick="window.location.href='LogoutServlet'">Log Out</button>
+    </div>
+        <h1>Welcome Back !</h1>
 
     </head>
-    <form method="get" action="LogoutServlet">
+    
+    
+    <!--
+    <form align="right" method="get" action="LogoutServlet">
         <head>
             <style>
                 input[type=submit]{
@@ -38,14 +47,13 @@
                     top: 10%;
                     right: 24%;
                 }
+                
             </style>
             <!--<body align="left">-->
-        <input type="submit" value="Logout">
+        <!-- <input type="submit" value="Logout">  
         <!--</body>-->
-
+ <!--       </head>
+        
     </form>
-        </head>
-        <body>
-            <h1>Welcome Back !</h1>
-        </body>
+ -->
 </html>
