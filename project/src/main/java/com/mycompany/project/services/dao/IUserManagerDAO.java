@@ -22,5 +22,5 @@ public interface IUserManagerDAO {
     public List<User> getRegisteredUsers();
     public boolean deleteUser(String username);
     public User getUser(String username);
-    public boolean updateUser(User user);
+    public boolean updateUser(User user, String newPassword);
 }

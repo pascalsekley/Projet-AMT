@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,7 +43,6 @@ public class UserManagerDAO implements IUserManagerDAO {
                 pstmt.setString(1, username);
                 pstmt.setString(2, email);
                 pstmt.setString(3, password);
-                //ResultSet rs = pstmt.executeQuery();
                 int ex = pstmt.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(UserManagerDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -56,8 +56,33 @@ public class UserManagerDAO implements IUserManagerDAO {
 
     @Override
     public User authenticate(String username, String password) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
+        ResultSet rs = null;
+        User user = null;
+        String usernameDb;
+        String emailDb;
+        String passwordDb = null;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
+            pstmt.setString(1, username);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                usernameDb = rs.getString("username");
+                emailDb = rs.getString("email");
+                passwordDb = rs.getString("password");
+                user = new User(usernameDb, emailDb, passwordDb);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserManagerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (user != null && passwordDb.equals(password)) {
+            return user;
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -65,7 +90,7 @@ public class UserManagerDAO implements IUserManagerDAO {
         boolean isPresent = false;
             try {
                 Connection connection = dataSource.getConnection();
-                PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM users WHERE username = (?)");
+                PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
                 pstmt.setString(1, username);
                 ResultSet rs = pstmt.executeQuery();
                 
@@ -79,7 +104,23 @@ public class UserManagerDAO implements IUserManagerDAO {
 
     @Override
     public List<User> getRegisteredUsers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<User> users = new ArrayList<>();
+        User user = new User();
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM users");
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                String username = rs.getString("username");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                users.add(new User(username, email, password));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserManagerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return users;
     }
 
     @Override
@@ -87,7 +128,7 @@ public class UserManagerDAO implements IUserManagerDAO {
         int status = 0;
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("DELETE FROM users WHERE username = (?)");
+            PreparedStatement pstmt = connection.prepareStatement("DELETE FROM users WHERE username = ?");
             pstmt.setString(1, username);
             status = pstmt.executeUpdate();
         } catch (SQLException ex) {
@@ -102,13 +143,14 @@ public class UserManagerDAO implements IUserManagerDAO {
         User user = null;
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("SELECT FROM users WHERE username = (?)");
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
             pstmt.setString(1, username);
             rs = pstmt.executeQuery();
             while(rs.next()){
             String usernameDb = rs.getString("username");
             String emailDb = rs.getString("email");
-            user = new User(usernameDb, emailDb, "*****");
+            String passwordDb = rs.getString("password");
+            user = new User(usernameDb, emailDb, passwordDb);
 
         }
             
@@ -120,8 +162,20 @@ public class UserManagerDAO implements IUserManagerDAO {
     }
 
     @Override
-    public boolean updateUser(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean updateUser(User user, String newPassword) {
+        int status = 0;
+        try {
+            String username = user.getUsername();
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("UPDATE users SET password = ?"+"WHERE username = ?");
+            pstmt.setString(1, newPassword);
+            pstmt.setString(2, username);
+            status = pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserManagerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return status == 1;
     }
 
 }

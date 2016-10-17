@@ -6,8 +6,7 @@
 package com.mycompany.project.web;
 
 import com.mycompany.project.model.User;
-import com.mycompany.project.services.IUserManager;
-import com.mycompany.project.services.UserManager;
+import com.mycompany.project.services.dao.IUserManagerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -16,7 +15,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,7 +25,7 @@ public class LoginServlet extends HttpServlet {
     public static final String ATT_USER_SESSION = "userSession";
     
     @EJB
-    IUserManager userManager;
+    IUserManagerDAO userManager;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -55,7 +53,6 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

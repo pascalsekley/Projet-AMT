@@ -23,7 +23,6 @@
         <!-- //For-Mobile-Apps-and-Meta-Tags -->
         
     <div style="text-align:right;">
-        <button class="button" onclick="window.location.href='index.jsp'">Login Page</button>
         <button class="button" onclick="window.location.href='LogoutServlet'">Log Out</button>
     </div>
         <h1>Welcome Back !</h1>
@@ -31,29 +30,4 @@
     </head>
     
     
-    <!--
-    <form align="right" method="get" action="LogoutServlet">
-        <head>
-            <style>
-                input[type=submit]{
-                    background-color: #4CAF50;
-                    border: none;
-                    color: white;
-                    padding: 16px 32px;
-                    text-decoration: none;
-                    margin: 4px 2px;
-                    cursor: pointer;
-                    position: fixed;
-                    top: 10%;
-                    right: 24%;
-                }
-                
-            </style>
-            <!--<body align="left">-->
-        <!-- <input type="submit" value="Logout">  
-        <!--</body>-->
- <!--       </head>
-        
-    </form>
- -->
 </html>

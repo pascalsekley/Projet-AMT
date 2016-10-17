@@ -9,7 +9,7 @@ package com.mycompany.project.model.rest;
 import com.mycompany.project.model.User;
 import com.mycompany.project.model.rest.dto.UserDTO;
 import com.mycompany.project.model.rest.dto.UserPostDTO;
-import com.mycompany.project.services.IUserManager;
+import com.mycompany.project.services.dao.IUserManagerDAO;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ import javax.ws.rs.core.UriInfo;
 public class UserAccountResource {
     
     @EJB
-    private IUserManager userManager;
+    private IUserManagerDAO userManager;
     
     @Context
     UriInfo uriInfo;
@@ -101,11 +101,13 @@ public class UserAccountResource {
                 
     }
     
+    @Path("/{username}")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateUser(UserPostDTO userPostDTO){
-        User user = fromPutOrPostDTO(userPostDTO);
-        if(userManager.updateUser(user)){
+    public Response updateUser(@PathParam("username") String username, UserPostDTO userPostDTO){
+        String newPassword = fromPutOrPostDTO(userPostDTO).getPassword();
+        User user = userManager.getUser(username);
+        if(userManager.updateUser(user, newPassword)){
             return Response
                     .ok()
                     .build();
