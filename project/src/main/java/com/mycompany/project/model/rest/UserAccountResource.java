@@ -1,7 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ -----------------------------------------------------------------------------------
+ Project 	 : Projet AMT
+ File     	 : UserAccountResource.java
+ Author(s)       : Pascal Sekley & Rodrigue Tchuensu 
+ Date            : Start: 21.09.16 - End:  
+ Purpose         : The goal of this class 
+ remark(s)       : n/a
+ Compiler        : jdk 1.8.0_101
+ -----------------------------------------------------------------------------------
  */
 
 package com.mycompany.project.model.rest;
@@ -106,8 +112,10 @@ public class UserAccountResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateUser(@PathParam("username") String username, UserPostDTO userPostDTO){
         String newPassword = fromPutOrPostDTO(userPostDTO).getPassword();
+        String newName     = fromPutOrPostDTO(userPostDTO).getName();
+        String newLastname = fromPutOrPostDTO(userPostDTO).getLastname();
         User user = userManager.getUser(username);
-        if(userManager.updateUser(user, newPassword)){
+        if(userManager.updateUser(user, newName, newLastname, newPassword)){
             return Response
                     .ok()
                     .build();
@@ -121,18 +129,20 @@ public class UserAccountResource {
     
     public User fromDTO(UserDTO dto){
         User myUser = new User();
+        myUser.setName(dto.getName());
+        myUser.setLastname(dto.getLastname());
         myUser.setUsername(dto.getUsername());
         myUser.setUsername(dto.getEmail());
         return myUser;
     }
     
     public User fromPutOrPostDTO(UserPostDTO dto){
-        return new User(dto.getUsername(), dto.getEmail(), dto.getPassword());
+        return new User(dto.getName(), dto.getLastname(), dto.getUsername(), dto.getEmail(), dto.getPassword());
     }
     
     
     public UserDTO toDTO(User user){
-        UserDTO dto = new UserDTO(user.getUsername(), user.getEmail(), user.getPassword());
+        UserDTO dto = new UserDTO(user.getName(), user.getLastname(), user.getUsername(), user.getEmail(), user.getPassword());
         return dto;
     }
 

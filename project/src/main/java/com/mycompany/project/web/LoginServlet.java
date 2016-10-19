@@ -1,7 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ -----------------------------------------------------------------------------------
+ Project 	 : Projet AMT
+ File     	 : LoginServlet.java
+ Author(s)       : Pascal Sekley & Rodrigue Tchuensu 
+ Date            : Start: 21.09.16 - End:  
+ Purpose         : The goal of this file (Servlet) is to deal with the login
+                   feature of the web application.
+ remark(s)       : n/a
+ Compiler        : jdk 1.8.0_101
+ -----------------------------------------------------------------------------------
  */
 package com.mycompany.project.web;
 
@@ -17,8 +24,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author
+ * <h1> Login servlet </h1>
+ * This servlet implements the POST request when a user wnat to log in.
+ * @author Pascal Sekley & Rodrigue Tchuensu
+ * @version 1.0
+ * @since 2016-10-19
  */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
@@ -64,7 +74,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                //processRequest(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(request, response);
         
     }
 
@@ -89,7 +99,7 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/pages/logConfirmation.jsp").forward(request, response);
         }else{
             request.setAttribute("errorMessage", "Login failed.");
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(request, response);
         }
 
     }

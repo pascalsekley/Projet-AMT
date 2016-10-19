@@ -23,11 +23,10 @@
         <meta name="keywords" content="Simple Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <!-- //For-Mobile-Apps-and-Meta-Tags -->
-
+        <h1>AMT Project</h1>
     </head>
 
     <body>
-        <h1> Projet AMT</h1>
         <div class="container w3">
             <h2>Login Now</h2>
             <form action="LoginServlet" method="post">
@@ -57,7 +56,7 @@
                 <div class="clear"></div>
                 
             </form>
-            <button class="button" onclick="window.location.href='registration.jsp'">Sign Up</button>
+            <button class="button" onclick="window.location.href='RegistrationServlet'">Sign Up</button>
         </div>
 
     </body>

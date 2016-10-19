@@ -24,9 +24,9 @@
 
     </head>
     <body>
-        <h1>Confirmation status you're registered !</h1>
+        <h1>You're registered !</h1>
         <div style="text-align:center;">
-        <button class="button" onclick="window.location.href='index.jsp'">Login Page</button>
+        <button class="button" onclick="window.location.href='LoginServlet'">Login Page</button>
         </div>
     </body>
 </html>

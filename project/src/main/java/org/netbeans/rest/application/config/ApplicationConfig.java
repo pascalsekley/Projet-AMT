@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package org.netbeans.rest.application.config;
 
@@ -10,8 +6,10 @@ import java.util.Set;
 import javax.ws.rs.core.Application;
 
 /**
- * 
- * @author Sekley Pascal <pascal.sekley@heig-vd.ch>
+ * <h1> Web resources </h1>
+ * @author Pascal Sekley & Rodrigue Tchuensu
+ * @version 1.0
+ * @since 2016-10-19
  */
 @javax.ws.rs.ApplicationPath("webresources")
 public class ApplicationConfig extends Application {
@@ -28,6 +26,9 @@ public class ApplicationConfig extends Application {
      * It is automatically populated with
      * all resources defined in the project.
      * If required, comment out calling this method in getClasses().
+     * 
+     * @param resources 
+     * @return Nothing
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.mycompany.project.model.rest.UserAccountResource.class);

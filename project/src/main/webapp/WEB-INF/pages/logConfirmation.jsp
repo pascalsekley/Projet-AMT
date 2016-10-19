@@ -22,12 +22,56 @@
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <!-- //For-Mobile-Apps-and-Meta-Tags -->
         
-    <div style="text-align:right;">
-        <button class="button" onclick="window.location.href='LogoutServlet'">Log Out</button>
-    </div>
-        <h1>Welcome Back !</h1>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+        </head>
+        
+        <body>
 
-    </head>
-    
-    
+            <div style="text-align:right;">
+                <button class="button" onclick="window.location.href='LogoutServlet'">Log Out</button>
+            </div>
+            <h1>Welcome ! Here you can see our content</h1>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                        <table id="example2" class="table table-bordered table-hover" role="grid" aria-describedby="example2_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Lastname</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Username</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+  
+            <script>
+      $(function () {
+        $("#example2").DataTable({
+          ajax: {
+            url: "api/people",
+            dataSrc: ""
+          },
+          columns: [
+            {data: "name"},
+            {data: "lastname"},
+            {data: "username"},
+            {data: "email"}
+          ]
+        });
+      });
+            </script>
+        </body>
+        
+
 </html>

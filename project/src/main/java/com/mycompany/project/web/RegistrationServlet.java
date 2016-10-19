@@ -1,12 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ -----------------------------------------------------------------------------------
+ Project 	 : Projet AMT
+ File     	 : RegistrationServlet.java
+ Author(s)       : Pascal Sekley & Rodrigue Tchuensu 
+ Date            : Start: 21.09.16 - End:  
+ Purpose         : The goal of this file (Servlet) is to deal with the registration
+                   of a user. He is redirected to a confirmation page and can
+                   now log in.
+ remark(s)       : n/a
+ Compiler        : jdk 1.8.0_101
+ -----------------------------------------------------------------------------------
  */
 package com.mycompany.project.web;
 
 import com.mycompany.project.model.User;
-//import com.mycompany.project.services.IUserManager;
 import com.mycompany.project.services.dao.IUserManagerDAO;
 import java.io.IOException;
 import javax.ejb.EJB;
@@ -16,16 +23,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author
+ * <h1> Registration servlet </h1>
+ * This servlet implements the POST request when a user whant to register.
+ * @author Pascal Sekley & Rodrigue Tchuensu
+ * @version 1.0
+ * @since 2016-10-19
  */
 public class RegistrationServlet extends HttpServlet {
 
     @EJB
-    //private IUserManager userManager;
     private IUserManagerDAO userManagerDAO;
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -37,6 +45,7 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/pages/registration.jsp").forward(request, response);
 
     }
 
@@ -52,19 +61,23 @@ public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Get all parameters from the http request and crete a new user
+        String name     = request.getParameter("name");
+        String lastname = request.getParameter("lastname");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        User newUser = new User(username, email, password);
+        String email    = request.getParameter("email");
+        User newUser    = new User(name, lastname, username, email, password);
 
-        //if (userManager.register(newUser)) {
+        // If the registration is successfully done, a confirmation page is displayed
+        // If not, an error message is also displayed to the user
         if (userManagerDAO.register(newUser)) {
 
             request.getRequestDispatcher("/WEB-INF/pages/regConfirmation.jsp").forward(request, response);
 
         } else {
             request.setAttribute("errorMessage", "Could not register new user.");
-            request.getRequestDispatcher("/registration.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/pages/registration.jsp").forward(request, response);
         }
 
     }
@@ -77,6 +90,6 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

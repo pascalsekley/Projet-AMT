@@ -1,7 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ -----------------------------------------------------------------------------------
+ Project 	 : Projet AMT
+ File     	 : RESTApplication.java
+ Author(s)       : Pascal Sekley & Rodrigue Tchuensu 
+ Date            : Start: 21.09.16 - End:  
+ Purpose         : The goal of this class is to define 
+                   caracteristics are.
+ remark(s)       : n/a
+ Compiler        : jdk 1.8.0_101
+ -----------------------------------------------------------------------------------
  */
 
 package com.mycompany.project.model.rest;
@@ -12,8 +19,11 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 /**
- * 
- * @author Sekley Pascal <pascal.sekley@heig-vd.ch>
+ * <h1> REST Application </h1>
+ * This class implement the configuration of the application
+ * @author Pascal Sekley & Rodrigue Tchuensu
+ * @version 1.0
+ * @since 2016-10-19
  */
 @ApplicationPath("/api")
 public class RESTApplication extends Application{

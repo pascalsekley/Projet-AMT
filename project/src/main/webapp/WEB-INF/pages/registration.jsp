@@ -32,6 +32,16 @@
             <h2>Create your account Now</h2>
             <form action="RegistrationServlet" method="post">
                 <div class="username">
+                    <span class="username">Name:</span>
+                    <input type="text" name="name" class="name" placeholder="" required="">
+                    <div class="clear"></div>
+                </div>
+                <div class="username">
+                    <span class="username">Lastname:</span>
+                    <input type="text" name="lastname" class="name" placeholder="" required="">
+                    <div class="clear"></div>
+                </div>
+                <div class="username">
                     <span class="username">Username:</span>
                     <input type="text" name="username" class="name" placeholder="" required="">
                     <div class="clear"></div>

@@ -1,7 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ -----------------------------------------------------------------------------------
+ Project 	 : Projet AMT
+ File     	 : RestrictionServlet.java
+ Author(s)       : Pascal Sekley & Rodrigue Tchuensu 
+ Date            : Start: 21.09.16 - End:  
+ Purpose         : The goal of this file (Filter) is to filter all the requests
+                   sent by a user and act accordingly. It protects some restricted
+                   page from users that are not logged in. A user can no more access 
+                   those pages once he log out.
+ remark(s)       : n/a
+ Compiler        : jdk 1.8.0_101
+ -----------------------------------------------------------------------------------
  */
 package com.mycompany.project.web;
 
@@ -27,8 +36,11 @@ import javax.servlet.http.HttpServletResponseWrapper;
 import javax.servlet.http.HttpSession;
 
 /**
- *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * <h1> Restriction Filter </h1>
+ * This filter protects some pages that a user could see once he logs in.
+ * @author Pascal Sekley & Rodrigue Tchuensu
+ * @version 1.0
+ * @since 2016-10-19
  */
 public class RestrictionFilter implements Filter {
     
@@ -58,9 +70,9 @@ public class RestrictionFilter implements Filter {
     }
 
     /**
-     *
-     * @param request The servlet request we are processing
-     * @param response The servlet response we are creating
+     * This method is in charge to filter the requests sent by the user
+     * @param req The servlet request we are processing
+     * @param res The servlet response we are creating
      * @param chain The filter chain we are processing
      *
      * @exception IOException if an input/output error occurs
@@ -70,32 +82,39 @@ public class RestrictionFilter implements Filter {
             FilterChain chain)
             throws IOException, ServletException {
         
-        /* Cast des objets request et response */
+        /* Cast request and response objets*/
 
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         
         
         String path = request.getRequestURI().substring(request.getContextPath().length());
-        if(path.startsWith("/inc")){
-            chain.doFilter(request, response);
+        if(path.equals("/")) {
+            req.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(req, res);
             return;
         }
         
-        /* Récupération de la session depuis la requête */
+        if(path.startsWith("/inc") || path.startsWith("/api/") || 
+           path.equals("/LogoutServlet") || path.equals("/RegistrationServlet") || 
+           path.equals("/LoginServlet")){
+            chain.doFilter(request, response);
+            return;
+        }
+ 
+        /* Get the Seesion from the http request */
         HttpSession session = request.getSession();
         
-         // Si l'objet utilisateur n'existe pas dans la session en cours, alors
-         // l'utilisateur n'est pas connecté.
+       
+         // The user is not connected if the user object doesn't exist in the session
          
         if (session.getAttribute("userSession") == null) {
 
-            /* Redirection vers la page d'acceuil */
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            /* redirection to the home page */
+            response.sendRedirect(request.getContextPath() + "/LoginServlet");
 
         } else {
 
-            /* Affichage de la page restreinte */
+            /* Display the restricted page */
             chain.doFilter(request, response);
 
         }

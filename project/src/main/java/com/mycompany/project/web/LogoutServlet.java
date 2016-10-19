@@ -1,7 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ -----------------------------------------------------------------------------------
+ Project 	 : Projet AMT
+ File     	 : LogoutServlet.java
+ Author(s)       : Pascal Sekley & Rodrigue Tchuensu 
+ Date            : Start: 21.09.16 - End:  
+ Purpose         : The goal of this file (Servlet) is to deal with the logout
+                   feature of the web application when a user log out. He's
+                   redirected to the main page of the application.
+ remark(s)       : n/a
+ Compiler        : jdk 1.8.0_101
+ -----------------------------------------------------------------------------------
  */
 package com.mycompany.project.web;
 
@@ -13,13 +21,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * <h1> Logout servlet </h1>
+ * This servlet implements the GET request when a user wnat to logout.
+ * @author Pascal Sekley & Rodrigue Tchuensu
+ * @version 1.0
+ * @since 2016-10-19
  */
 public class LogoutServlet extends HttpServlet {
 
    
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -32,12 +42,11 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //processRequest(request, response);
         HttpSession session = request.getSession();
         session.invalidate();
         
-        // Affichage de la page de connexion
-        request.getRequestDispatcher("../index.jsp").forward(request, response);
+        // Display the connection page to the user
+        request.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(request, response);
     }
 
     /**
@@ -51,8 +60,6 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // processRequest(request, response);
-       //processRequest(request, response);
         
     }
 
@@ -64,6 +71,6 @@ public class LogoutServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }
