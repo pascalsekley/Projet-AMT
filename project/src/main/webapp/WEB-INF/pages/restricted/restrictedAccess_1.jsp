@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <title>Simple Login Form a Flat Responsive Widget Template :: w3layouts</title>
-        <link rel="stylesheet" href="../inc/css/style.css">
+        <link rel="stylesheet" href="../../../inc/css/style.css">
 
         <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 

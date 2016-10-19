@@ -32,12 +32,14 @@
             <div style="text-align:right;">
                 <button class="button" onclick="window.location.href='LogoutServlet'">Log Out</button>
             </div>
+            <div style="text-align:right;">
+                    <button class="button" onclick="window.location.href='RestrictedPagesServlet'">Restricted Page</button>
             <h1>Welcome ! Here you can see our content</h1>
             
             <div class="container">
                 <div class="row">
                     <div class="col-md-1"></div>
-                        <div class="col-md-10">
+                        <div class="col-md-11">
                         <table id="example2" class="table table-bordered table-hover" role="grid" aria-describedby="example2_info">
                             <thead>
                                 <tr role="row">
