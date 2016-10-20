@@ -1,14 +1,24 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ -----------------------------------------------------------------------------------
+ Project 	 : Projet AMT
+ File     	 : UserDTO.java
+ Author(s)       : Pascal Sekley & Rodrigue Tchuensu 
+ Date            : Start: 21.09.16 - End:  
+ Purpose         : The goal of this class is to define a user and what his
+                   caracteristics are in a DTO format.
+ remark(s)       : n/a
+ Compiler        : jdk 1.8.0_101
+ -----------------------------------------------------------------------------------
  */
 
 package com.mycompany.project.model.rest.dto;
 
 /**
- * 
- * @author Sekley Pascal <pascal.sekley@heig-vd.ch>
+ * <h1> User </h1>
+ * The goal of this class is to define a user in a DTO format.
+ * @author Pascal Sekley & Rodrigue Tchuensu
+ * @version 1.0
+ * @since 2016-10-19
  */
 public class UserDTO {
     private String name;
@@ -43,7 +53,10 @@ public class UserDTO {
         return lastname;
     }
 
-    
+    /**
+   * This method is used to get a user's username in a database. 
+   * @return String The user's username
+   */
     public String getUsername(){
         return username;
     }
@@ -67,9 +80,18 @@ public class UserDTO {
         this.lastname = lastname;
     }
     
+   /**
+   * This method is used to set a user's username in a database.
+   * @param username The user's lastname
+   */
     public void setUsername(String username){
         this.username = username;
     }
+    
+   /**
+   * This method is used to set a user's email in a database.
+   * @param email The user's email
+   */
     public void setEmail(String email){
         this.email = email;
     }

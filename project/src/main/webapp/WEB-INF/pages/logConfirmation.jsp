@@ -25,17 +25,11 @@
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+        <h1><font color="black">Here is all registered users</font></h1>
         </head>
         
         <body>
-
-            <div style="text-align:right;">
-                <button class="button" onclick="window.location.href='LogoutServlet'">Log Out</button>
-            </div>
-            <div style="text-align:right;">
-                    <button class="button" onclick="window.location.href='RestrictedPagesServlet'">Restricted Page</button>
-            <h1>Welcome ! Here you can see our content</h1>
-            
+       
             <div class="container">
                 <div class="row">
                     <div class="col-md-1"></div>
@@ -56,6 +50,12 @@
                     <div class="col-md-1"></div>
                 </div>
             </div>
+            
+            <div style="text-align:center;">
+                <button class="button" onclick="window.location.href='LogoutServlet'">Log Out</button>
+                <button class="button" onclick="window.location.href='RestrictedPagesServlet'">Restricted Page</button>
+            </div>
+            
   
             <script>
       $(function () {
@@ -73,7 +73,17 @@
         });
       });
             </script>
+            
+            <div class="content-block" id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6"><font color="white">&copy; Copyright HEIG-VD 2016</font></div>
+                    </div>
+                </div>
+            </div><!-- #footer -->
+            
         </body>
         
 
+        
 </html>

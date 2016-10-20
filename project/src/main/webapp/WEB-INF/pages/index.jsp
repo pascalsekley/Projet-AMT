@@ -23,7 +23,7 @@
         <meta name="keywords" content="Simple Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <!-- //For-Mobile-Apps-and-Meta-Tags -->
-        <h1>AMT Project</h1>
+    <h1><font color="black">AMT Project</font></h1>
     </head>
 
     <body>
@@ -53,13 +53,16 @@
                 <div class="login-w3">
                     <input type="submit" class="login" value="Login">
                 </div>
-                <div class="clear"></div>
                 
             </form>
             <button class="button" onclick="window.location.href='RegistrationServlet'">Sign Up</button>
+            <div class="row">
+                <div class="col-xs-6"><font color="white">&copy; Copyright HEIG-VD 2016</font></div>
+            </div>
         </div>
 
     </body>
+    
 
 
 

@@ -1,4 +1,15 @@
-
+/*
+ -----------------------------------------------------------------------------------
+ Project 	 : Projet AMT
+ File     	 : ApplicationConfig.java
+ Author(s)       : Pascal Sekley & Rodrigue Tchuensu 
+ Date            : Start: 21.09.16 - End:  
+ Purpose         : The goal of this file is set all the configuration of the 
+                   application
+ remark(s)       : n/a
+ Compiler        : jdk 1.8.0_101
+ -----------------------------------------------------------------------------------
+ */
 
 package org.netbeans.rest.application.config;
 

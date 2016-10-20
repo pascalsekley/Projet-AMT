@@ -1,7 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ -----------------------------------------------------------------------------------
+ Project 	 : Projet AMT
+ File     	 : UserPostDTO.java
+ Author(s)       : Pascal Sekley & Rodrigue Tchuensu 
+ Date            : Start: 21.09.16 - End:  
+ Purpose         : The goal of this class is the same as UerDTO
+ remark(s)       : n/a
+ Compiler        : jdk 1.8.0_101
+ -----------------------------------------------------------------------------------
  */
 
 package com.mycompany.project.model.rest.dto;
@@ -21,6 +27,14 @@ public class UserPostDTO {
         
     }
     
+    /**
+     * Class constructor
+     * @param name     User's name
+     * @param lastname User's lastname
+     * @param username User's username
+     * @param email    User's email
+     * @param password User's password
+     */
     public UserPostDTO(String name, String lastname, String username, String email, String password){
         this.name = name;
         this.lastname = lastname;
@@ -45,13 +59,26 @@ public class UserPostDTO {
         return lastname;
     }
     
-    
+   /**
+   * This method is used to get a user's username in a database. 
+   * @return String The user's lastname
+   */
     public String getUsername(){
         return username;
     }
+    
+   /**
+   * This method is used to get a user's email in a database. 
+   * @return String The user's lastname
+   */
     public String getEmail(){
         return email;
     }
+    
+   /**
+   * This method is used to get a user's password in a database. 
+   * @return String The user's lastname
+   */
     public String getPassword(){
         return password;
     }
@@ -73,13 +100,26 @@ public class UserPostDTO {
         this.lastname = lastname;
     }
     
-    
+     /**
+   * This method is used to set a user's username in a database.
+   * @param username The user's username
+   */
     public void setUsername(String username){
         this.username = username;
     }
+    
+   /**
+   * This method is used to set a user's email in a database.
+   * @param email The user's email
+   */
     public void setEmail(String email){
         this.email = email;
     }
+    
+   /**
+   * This method is used to set a user's password in a database.
+   * @param password The user's password
+   */
     public void setPassword(String password){
         this.password = password;
     }

@@ -24,7 +24,7 @@
 
     </head>
     <body>
-        <h1>You're registered !</h1>
+        <h1><font color="black">You're registered !</font> <h1>
         <div style="text-align:center;">
         <button class="button" onclick="window.location.href='LoginServlet'">Login Page</button>
         </div>
