@@ -8,7 +8,7 @@ Version 1.0
 ##Introduction
 In this repository we have a web application that runs on a wildfly server in which the application is autodeployed.  
 The application is launch via a docker container.
-The principal objectif ot the  project is to apply the technologies, techniques and design patterns (MVC, DAO) presented during the Multi-Tiered Application course. We used Java EE application server, netbeans to develop the web application, and JAX-RS API in order to have a Restfull application.
+The principal goal of the  project is to apply the technologies, techniques and design patterns (MVC, DAO) presented during the Multi-Tiered Application course. We used Java EE application server, netbeans to develop the web application, and JAX-RS API in order to have a Restfull application.
 
 ##Goal
 1. *Design and implement a page with a login and registration form*
@@ -72,12 +72,12 @@ Click [here](https://hub.docker.com/r/jboss/wildfly)
 > We decided to use as unique ID the username of a user which is supposed to uniquely identify a user in our database. The username is the primary key in that case.
 
 ##REST API
-On using the REST ressources of our application, the entry point to our application is **_/api_**. Our implementation of RESST makes it possible for a user to achieve the CRUD operations. As shown below we have a list of possible operations that can be achieved with our API.  
+On using the REST ressources of our application, the entry point to our application is **_/api_**. Our implementation of REST makes it possible for a user to achieve the CRUD operations. As shown below we have a list of possible operations that can be achieved with our API.  
 
 
 **Insert User (Create)**
 ----
-Creates a new user and add him to the list of registered users. If user username already exists the new user is not inserted in the list of registered users.
+Creates a new user and add him to the registered users list. If the user's username already exists the new user is not inserted in the list of registered users.
 
 ````
 URL : /api/people 
