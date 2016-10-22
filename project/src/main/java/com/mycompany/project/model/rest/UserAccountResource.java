@@ -77,18 +77,26 @@ public class UserAccountResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createUser(UserPostDTO userPostDTO){
+        boolean result;
         User user = fromPutOrPostDTO(userPostDTO);
-        userManager.register(user);
-        
-        URI href = uriInfo
-                .getBaseUriBuilder()
-                .path(UserAccountResource.class)
-                .path(UserAccountResource.class, "getUser")
-                .build(user.getUsername());
-             
-        return Response
-                .created(href)
-                .build();           
+        result = userManager.register(user);
+        if (result) {
+            URI href = uriInfo
+                    .getBaseUriBuilder()
+                    .path(UserAccountResource.class)
+                    .path(UserAccountResource.class, "getUser")
+                    .build(user.getUsername());
+
+            return Response
+                    .created(href)
+                    .entity("User created")
+                    .build();
+        }
+        else{
+            return Response.status(Response.Status.CONFLICT)
+                    .entity("User NOT created")
+                    .build();
+        }
     }
     
     /**
@@ -103,10 +111,12 @@ public class UserAccountResource {
         if (userManager.deleteUser(username)) {
             return Response
                     .ok()
+                    .entity("User deleted")
                     .build();
         } else {
             return Response
                     .status(Status.NOT_FOUND)
+                    .entity("User NOT found")
                     .build();
         }
         
@@ -120,9 +130,15 @@ public class UserAccountResource {
     @Path("/{username}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public UserDTO getUser(@PathParam("username") String username){
+    public Response getUser(@PathParam("username") String username){
         User userToFind = userManager.getUser(username);
-        return toDTO(userToFind);
+        if (userToFind != null) {
+            return Response.ok(toDTO(userToFind))
+                    .build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).entity("User not found").build();
+        }
+        
                 
     }
     
@@ -144,10 +160,12 @@ public class UserAccountResource {
         if(userManager.updateUser(user, newName, newLastname, newPassword)){
             return Response
                     .ok()
+                    .entity("User has been modified successfully")
                     .build();
         } else{
             return Response
                     .status(Status.NOT_MODIFIED)
+                    .entity("Failed to modify the user: Unidentified user")
                     .build();
         }
     }
