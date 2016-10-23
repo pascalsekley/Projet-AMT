@@ -45,7 +45,7 @@ import javax.ws.rs.core.UriInfo;
 @Path("/users")
 public class UserAccountResource {
     
-    @EJB
+        @EJB
     private IUserManagerDAO userManager;
     
     @Context
@@ -158,7 +158,7 @@ public class UserAccountResource {
         String newLastname = fromPutOrPostDTO(userPostDTO).getLastname();
         String newEmail    = fromPutOrPostDTO(userPostDTO).getEmail();
         User user = userManager.getUser(username);
-        if(userManager.updateUser(user, newName, newLastname, newPassword, newEmail)){
+        if(user != null && userManager.updateUser(user, newName, newLastname, newPassword, newEmail)){
             return Response
                     .ok()
                     .entity("User has been modified successfully")
@@ -168,6 +168,7 @@ public class UserAccountResource {
                     .status(Status.NOT_MODIFIED)
                     .entity("Failed to modify the user: Unidentified user")
                     .build();
+              
         }
     }
  

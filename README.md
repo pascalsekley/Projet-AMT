@@ -1,4 +1,4 @@
-# AMT Project (Develop a Multi-Tiered App)
+# AMT Project (Development of a Multi-Tiered App)
 ![](multiTieredApp.PNG)
 
 Date: 10/20/2016
@@ -80,7 +80,7 @@ On using the REST ressources of our application, the entry point to our applicat
 Creates a new user and add him to the list of registered users. If user username already exists the new user is not inserted in the list of registered users.
 
 ````
-URL : /api/people 
+URL : /api/users 
 Method : POST
 URL PARAMETERS : none 
 DATA PARAMETER : 
@@ -94,10 +94,10 @@ DATA PARAMETER :
            
 SUCCESS RESPONSE :
                Code: 201 created
+               Content: User Created
 ERROR RESPONSE :
                Code: 409 Conflict
-               User not Created
-SAMPLE CALL :
+               Content:User not Created
 NOTES :
 ````
 
@@ -107,7 +107,7 @@ NOTES :
 Returns json data of all current registered users in tabulated form.
 
 ````
-URL : /api/people  
+URL : /api/users 
 Method : GET
 URL PARAMETERS : none
 DATA PARAMETER : none
@@ -128,9 +128,7 @@ SUCCESS RESPONSE :
                 "email": "jessica@amt.ch"
              }
          ]
-ERROR RESPONSE :
-      Code: 
-SAMPLE CALL :
+ERROR RESPONSE : -
 NOTES :
 ````  
 
@@ -139,7 +137,7 @@ NOTES :
 Returns json data about a given registered user in a tabulated form.
 
 ````
-URL : /api/people/username  
+URL : /api/users/{username}  
 Method : GET
 URL PARAMETERS : 
             Required:
@@ -156,17 +154,20 @@ SUCCESS RESPONSE :
                 "email": "admin@amt.ch"
             }
         ]
-        Code:
+
+ERROR RESPONSE :
+        Code: 404 Not Found
+        Content: user not found 
 NOTES :
 ````
 
 
 **Modify user  (Update)**
 ----
-Modify/update some of the attribute that characterises a user, except for the username.
+Update/Modify some of the attribute that characterises a user, except for the username.
 
 ````
-URL : /api/people/username 
+URL : /api/users/{username}
 Method : PUT
 URL PARAMETERS :
             Required:
@@ -180,8 +181,10 @@ DATA PARAMETER :
             } 
 SUCCESS RESPONSE :
                Code: 200 OK
+               Content: User has been modified successfully
 ERROR RESPONSE :
                Code:
+               Content:
 NOTES :
 ````
 
@@ -191,7 +194,7 @@ NOTES :
 Removes a given user from the the list of registered users.
 
 ````
-URL : /api/people  
+URL : /api/users/{username}
 Method : DELETE
 URL PARAMETERS :
             Required:
@@ -201,6 +204,7 @@ SUCCESS RESPONSE :
             Code: 200 OK
 ERROR RESPONSE :
             Code: 404 Not Found
+            Content: User NOT found
 NOTES :
 ````  
 

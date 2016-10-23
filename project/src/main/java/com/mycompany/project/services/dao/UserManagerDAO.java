@@ -203,16 +203,16 @@ public class UserManagerDAO implements IUserManagerDAO {
             PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
             pstmt.setString(1, username);
             rs = pstmt.executeQuery();
-            while(rs.next()){
-            String nameDb = rs.getString("name");
-            String lastnameDb = rs.getString("lastname");
-            String usernameDb = rs.getString("username");
-            String emailDb = rs.getString("email");
-            String passwordDb = rs.getString("password");
-            user = new User(nameDb, lastnameDb, usernameDb, emailDb, passwordDb);
+            while (rs.next()) {
+                String nameDb = rs.getString("name");
+                String lastnameDb = rs.getString("lastname");
+                String usernameDb = rs.getString("username");
+                String emailDb = rs.getString("email");
+                String passwordDb = rs.getString("password");
+                user = new User(nameDb, lastnameDb, usernameDb, emailDb, passwordDb);
 
-        }
-            
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(UserManagerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
