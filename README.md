@@ -75,7 +75,7 @@ Click [here](https://hub.docker.com/r/jboss/wildfly)
 On using the REST ressources of our application, the entry point to our application is **_/api_**. Our implementation of REST makes it possible for a user to achieve the CRUD operations. As shown below we have a list of possible operations that can be achieved with our API.  
 
 
-**Insert User (Create)**
+**Insert a user (Create)**
 ----
 Creates a new user and add him to the list of registered users. If user username already exists the new user is not inserted in the list of registered users.
 
@@ -102,7 +102,7 @@ NOTES :
 ````
 
 
-**Show Users (Read)**
+**Show users (Read)**
 ----
 Returns json data of all current registered users in tabulated form.
 
@@ -132,7 +132,7 @@ ERROR RESPONSE : -
 NOTES :
 ````  
 
-**Show User (Read)**
+**Show a user (Read)**
 ----
 Returns json data about a given registered user in a tabulated form.
 
@@ -162,7 +162,7 @@ NOTES :
 ````
 
 
-**Modify user  (Update)**
+**Modify a user  (Update)**
 ----
 Update/Modify some of the attribute that characterises a user, except for the username.
 
@@ -183,13 +183,13 @@ SUCCESS RESPONSE :
                Code: 200 OK
                Content: User has been modified successfully
 ERROR RESPONSE :
-               Code:
-               Content:
+               Code: 304 Not Modified
+               Content: Failed to modify the user: Unidentified user
 NOTES :
 ````
 
 
-**Remove user (Delete)**
+**Remove a user (Delete)**
 ----
 Removes a given user from the the list of registered users.
 
