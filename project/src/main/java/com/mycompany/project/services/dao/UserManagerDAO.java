@@ -227,22 +227,24 @@ public class UserManagerDAO implements IUserManagerDAO {
    * @param newName The user's new name
    * @param newLastname The user's new lastname
    * @param newPassword The new password to set
+   * @param newEmail The new email
    * @exception SQLException
    * @see SQLException
    * @return boolean If the action could be perform or not
    */  
     
     @Override
-    public boolean updateUser(User user, String newName, String newLastname, String newPassword) {
+    public boolean updateUser(User user, String newName, String newLastname, String newPassword, String newEmail) {
         int status = 0;
         try {
             String username = user.getUsername();
             Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("UPDATE users SET password = ?, name = ?, lastname = ?"+"WHERE username = ?");
+            PreparedStatement pstmt = connection.prepareStatement("UPDATE users SET password = ?, name = ?, lastname = ?, email = ?"+"WHERE username = ?");
             pstmt.setString(1, newPassword);
             pstmt.setString(2, newName);
             pstmt.setString(3, newLastname);
-            pstmt.setString(4, username);
+            pstmt.setString(4, newEmail);
+            pstmt.setString(5, username);
             status = pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UserManagerDAO.class.getName()).log(Level.SEVERE, null, ex);

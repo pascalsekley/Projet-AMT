@@ -156,8 +156,9 @@ public class UserAccountResource {
         String newPassword = fromPutOrPostDTO(userPostDTO).getPassword();
         String newName     = fromPutOrPostDTO(userPostDTO).getName();
         String newLastname = fromPutOrPostDTO(userPostDTO).getLastname();
+        String newEmail    = fromPutOrPostDTO(userPostDTO).getEmail();
         User user = userManager.getUser(username);
-        if(userManager.updateUser(user, newName, newLastname, newPassword)){
+        if(userManager.updateUser(user, newName, newLastname, newPassword, newEmail)){
             return Response
                     .ok()
                     .entity("User has been modified successfully")
