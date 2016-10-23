@@ -49,7 +49,12 @@
                 </div>
                 <div class="password-agileits">
                     <span class="username">Password:</span>
-                    <input type="password" name="password" class="password" placeholder="" required="">
+                    <input type="password" name="password" class="password" id="password" placeholder="" required="">
+                </div>
+                
+                 <div class="password-agileits">
+                    <span class="username">Confirm Password:</span>
+                    <input type="password" name="Confirm_password" class="password" id="confirm_password" placeholder="" required="">
                 </div>
                     <div class = "erreur">
                         <h2><font color="red"> ${errorMessage} </font> <h3> <br><br>
@@ -67,7 +72,21 @@
                 <div class="clear"></div>   
             </form>
         </div>
-        
+        <script>
+            var password = document.getElementById("password"),
+            confirm_password = document.getElementById("confirm_password");
+
+            function validatePassword(){
+              if(password.value !== confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+              } else {
+                confirm_password.setCustomValidity('');
+              }
+            }
+
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+        </script>
         
 
     </body>

@@ -63,7 +63,7 @@ public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Get all parameters from the http request and crete a new user
+        // Get all parameters from the http request and create a new user
         String name     = request.getParameter("name");
         String lastname = request.getParameter("lastname");
         String username = request.getParameter("username");

@@ -34,13 +34,13 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                         <div class="col-md-11">
-                        <table id="example2" class="table table-bordered table-hover" role="grid" aria-describedby="example2_info">
+                        <table id="users" class="table table-bordered table-hover" role="grid" aria-describedby="users_info">
                             <thead>
                                 <tr role="row">
-                                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Name</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Lastname</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Username</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Email</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Lastname</th>
+                                    <th class="sorting" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Username</th>
+                                    <th class="sorting" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Email</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,9 +59,9 @@
   
             <script>
       $(function () {
-        $("#example2").DataTable({
+        $("#users").DataTable({
           ajax: {
-            url: "api/people",
+            url: "api/users",
             dataSrc: ""
           },
           columns: [

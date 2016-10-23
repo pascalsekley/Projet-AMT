@@ -42,7 +42,7 @@ import javax.ws.rs.core.UriInfo;
  * @author Sekley Pascal & Rodrigue Tchuensu
  */
 @Stateless
-@Path("/people")
+@Path("/users")
 public class UserAccountResource {
     
     @EJB
