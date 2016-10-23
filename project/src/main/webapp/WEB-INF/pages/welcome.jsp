@@ -1,7 +1,7 @@
 <%-- 
     Document   : logConfirmation
     Created on : 2 oct. 2016, 08:34:44
-    Author     : Pascal Sekley
+    Author     : Pascal Sekley & Rodrigue Tchuensu
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,7 +25,7 @@
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
-        <h1><font color="black">Here is all registered users</font></h1>
+        <h1><font color="black">Here are all the registered users</font></h1>
         </head>
         
         <body>
@@ -52,8 +52,8 @@
             </div>
             
             <div style="text-align:center;">
-                <button class="button" onclick="window.location.href='LogoutServlet'">Log Out</button>
-                <button class="button" onclick="window.location.href='RestrictedPagesServlet'">Restricted Page</button>
+                <button class="button" onclick="window.location.href='logout'">Log Out</button>
+                <button class="button" onclick="window.location.href='restrictedPages'">Restricted Page</button>
             </div>
             
   

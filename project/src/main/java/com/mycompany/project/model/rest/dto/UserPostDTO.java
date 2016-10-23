@@ -11,10 +11,12 @@
  */
 
 package com.mycompany.project.model.rest.dto;
-
 /**
- * 
- * @author Sekley Pascal <pascal.sekley@heig-vd.ch>
+ * <h1> User </h1>
+ * The goal of this class is to define a user in a DTO format.
+ * @author Pascal Sekley & Rodrigue Tchuensu
+ * @version 1.0
+ * @since 2016-10-19
  */
 public class UserPostDTO {
     private String name;

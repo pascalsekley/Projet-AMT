@@ -3,6 +3,8 @@
         Author URL: http://w3layouts.com
         License: Creative Commons Attribution 3.0 Unported
         License URL: http://creativecommons.org/licenses/by/3.0/
+
+        Modified by: Pascal Sekley & Rodrigue Tchuensu
 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
@@ -28,7 +30,7 @@
         <h1><font color="black"> AMT Project</font></h1>
         <div class="container w3">
             <h2>Create your account Now</h2>
-            <form action="RegistrationServlet" method="post">
+            <form action="registration" method="post">
                 <div class="username">
                     <span class="username">Name:</span>
                     <input type="text" name="name" class="name" placeholder="" required="">
@@ -56,11 +58,17 @@
                     <input type="submit" class="login" value="Sign Up">
                 </div>
                     <div class="row">
+                    <div class="col-xs-6"><button class="button" onclick="window.location.href='login'">Cancel</button></div>
+                    </div>
+                    <br><br>
+                    <div class="row">
                         <div class="col-xs-6"><font color="white">&copy; Copyright HEIG-VD 2016</font></div>
                     </div>
                 <div class="clear"></div>   
             </form>
         </div>
+        
+        
 
     </body>
 </html>

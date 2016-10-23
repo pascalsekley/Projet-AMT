@@ -1,12 +1,11 @@
 /*
  -----------------------------------------------------------------------------------
  Project 	 : Projet AMT
- File     	 : LogoutServlet.java
+ File     	 : WelcomeServlet.java
  Author(s)       : Pascal Sekley & Rodrigue Tchuensu 
  Date            : Start: 21.09.16 - End:  
- Purpose         : The goal of this file (Servlet) is to deal with the logout
-                   feature of the web application when a user log out. He's
-                   redirected to the main page of the application.
+ Purpose         : The goal of this file (servlet) is to redirect a user's request to
+                   the welcome page.
  remark(s)       : n/a
  Compiler        : jdk 1.8.0_101
  -----------------------------------------------------------------------------------
@@ -18,18 +17,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * <h1> Logout servlet </h1>
- * This servlet implements the GET request when a user want to logout.
+ * <h1> Welcome Servlet </h1>
+ * This servlet implements the GET request when a user want to access the welcome page
  * @author Pascal Sekley & Rodrigue Tchuensu
  * @version 1.0
  * @since 2016-10-19
  */
-public class LogoutServlet extends HttpServlet {
+public class WelcomeServlet extends HttpServlet {
 
    
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -41,12 +40,7 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        HttpSession session = request.getSession();
-        session.invalidate();
-        
-        // Display the connection page to the user
-        response.sendRedirect(request.getContextPath() +  "/login");
+        request.getRequestDispatcher("/WEB-INF/pages/welcome.jsp").forward(request, response);
     }
 
     /**
@@ -60,7 +54,6 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
     }
 
     /**

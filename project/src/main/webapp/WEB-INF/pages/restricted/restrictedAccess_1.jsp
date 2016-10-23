@@ -1,7 +1,8 @@
 <%-- 
     Document   : restrictedAccess_1
+    Goal       : Restricted page that a user can only access when he log on
     Created on : 2 oct. 2016, 09:42:02
-    Author     : Pascal Sekley
+    Author     : Pascal Sekley & Rodrigue Tchuensu
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
@@ -39,13 +40,13 @@
         <nav class = "navbar navbar-inverse" role = "navigation">
 
             <div class = "navbar-header">
-                <a class = "navbar-brand" href = "">Private</a>
+                <a class = "navbar-brand" href = "restrictedPages">Private</a>
             </div>
 
             <div>
                 <ul class = "nav navbar-nav">
-                    <li class = "active"><a href = "">Home</a></li>
-                    <li><a href = "LogoutServlet">Logout</a></li>
+                    <li class = "active"><a href = "welcome">Home</a></li>
+                    <li><a href = "logout">Logout</a></li>
                     
                     <%--
                     <li class = "dropdown">

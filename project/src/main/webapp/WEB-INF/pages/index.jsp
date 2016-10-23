@@ -3,6 +3,8 @@
         Author URL: http://w3layouts.com
         License: Creative Commons Attribution 3.0 Unported
         License URL: http://creativecommons.org/licenses/by/3.0/ "inc/css/style.css"
+
+        Modified by: Pascal Sekley & Rodrigue Tchuensu
 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
@@ -29,7 +31,7 @@
     <body>
         <div class="container w3">
             <h2>Login Now</h2>
-            <form action="LoginServlet" method="post">
+            <form action="login" method="post">
                 <div class="username">
                     <span class="username">Username:</span>
                     <input type="text" name="username" class="name" placeholder="" required="">
@@ -55,7 +57,7 @@
                 </div>
                 
             </form>
-            <button class="button" onclick="window.location.href='RegistrationServlet'">Sign Up</button>
+            <button class="button" onclick="window.location.href='registration'">Sign Up</button>
             <div class="row">
                 <div class="col-xs-6"><font color="white">&copy; Copyright HEIG-VD 2016</font></div>
             </div>

@@ -15,6 +15,7 @@ package com.mycompany.project.web;
 
 import com.mycompany.project.model.User;
 import com.mycompany.project.services.dao.IUserManagerDAO;
+import static com.mycompany.project.web.LoginServlet.ATT_USER_SESSION;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -45,6 +46,7 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         request.getRequestDispatcher("/WEB-INF/pages/registration.jsp").forward(request, response);
 
     }
@@ -73,10 +75,11 @@ public class RegistrationServlet extends HttpServlet {
         // If not, an error message is also displayed to the user
         if (userManagerDAO.register(newUser)) {
 
-            request.getRequestDispatcher("/WEB-INF/pages/regConfirmation.jsp").forward(request, response);
+            request.getSession().setAttribute(ATT_USER_SESSION, newUser);
+            response.sendRedirect(request.getContextPath() + "/welcome");
 
         } else {
-            request.setAttribute("errorMessage", "Could not register new user.");
+            request.setAttribute("errorMessage", "Could not register new user. username already in use !");
             request.getRequestDispatcher("/WEB-INF/pages/registration.jsp").forward(request, response);
         }
 

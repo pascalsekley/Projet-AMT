@@ -8,7 +8,7 @@ Version 1.0
 ##Introduction
 In this repository we have a web application that runs on a wildfly server in which the application is autodeployed.  
 The application is launch via a docker container.
-The principal goal of the  project is to apply the technologies, techniques and design patterns (MVC, DAO) presented during the Multi-Tiered Application course. We used Java EE application server, netbeans to develop the web application, and JAX-RS API in order to have a Restfull application.
+The principal objectif ot the  project is to apply the technologies, techniques and design patterns (MVC, DAO) presented during the Multi-Tiered Application course. We used Java EE application server, netbeans to develop the web application, and JAX-RS API in order to have a Restfull application.
 
 ##Goal
 1. *Design and implement a page with a login and registration form*
@@ -77,7 +77,7 @@ On using the REST ressources of our application, the entry point to our applicat
 
 **Insert User (Create)**
 ----
-Creates a new user and add him to the registered users list. If the user's username already exists the new user is not inserted in the list of registered users.
+Creates a new user and add him to the list of registered users. If user username already exists the new user is not inserted in the list of registered users.
 
 ````
 URL : /api/people 
@@ -95,7 +95,8 @@ DATA PARAMETER :
 SUCCESS RESPONSE :
                Code: 201 created
 ERROR RESPONSE :
-               Code: 
+               Code: 409 Conflict
+               User not Created
 SAMPLE CALL :
 NOTES :
 ````
@@ -201,20 +202,7 @@ SUCCESS RESPONSE :
 ERROR RESPONSE :
             Code: 404 Not Found
 NOTES :
-````
-
-
-
-
-
-
-
-
-
-
-
-
-
+````  
 
 
 
